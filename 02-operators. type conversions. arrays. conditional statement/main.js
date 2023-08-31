@@ -103,5 +103,24 @@ if (currentHour >= 23 || currentHour < 5) {
   }
 
 // Завдання №6
+let arr = [4, 5, 2, 1, 6, 5, 3, 5, 2, 5];
+
+// Створення об'єкта для підрахунку кількості входжень кожного числа
+let numberCounts = arr.reduce((counts, num) => {
+  counts[num] = (counts[num] || 0) + 1;
+  return counts;
+}, {});
+
+// Знаходження числа з найбільшою кількістю входжень
+let mostFrequentNumber = Object.keys(numberCounts).reduce((a, b) => numberCounts[a] > numberCounts[b] ? a : b);
+
+// Додавання числа з найбільшою кількістю входжень до нового масиву data
+let data = [mostFrequentNumber];
+
+// Створення нового масиву arr, який не містить входжень числа mostFrequentNumber
+arr = arr.filter(num => num !== mostFrequentNumber);
+
+console.log(data); // Масив з найчастіше зустрічаючимся числом
+console.log(arr);  // Змінений масив arr без найчастіше зустрічаючогося числа
 
 
